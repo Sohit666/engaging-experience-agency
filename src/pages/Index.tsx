@@ -1,8 +1,26 @@
 import { ArrowRight, Code, Smartphone, Cloud, Brain, Database, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
+import { useEffect, useState } from "react";
 
 const Index = () => {
+  const [animatedStats, setAnimatedStats] = useState({
+    projects: 0,
+    implementations: 0,
+    solutions: 0
+  });
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAnimatedStats({
+        projects: 100,
+        implementations: 50,
+        solutions: 30
+      });
+    }, 500);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-secondary to-secondary/95">
       <Navigation />
@@ -80,7 +98,7 @@ const Index = () => {
             ].map((feature, index) => (
               <div
                 key={feature.title}
-                className="p-6 bg-white/5 backdrop-blur-sm rounded-lg hover:bg-white/10 transition-all duration-300 transform hover:-translate-y-1 border border-primary/20"
+                className="p-6 bg-white/5 backdrop-blur-sm rounded-lg hover:bg-white/10 transition-all duration-300 transform hover:-translate-y-1"
               >
                 <feature.icon className="w-12 h-12 text-primary mb-4" />
                 <h3 className="text-xl font-semibold mb-2 text-white">{feature.title}</h3>
@@ -96,12 +114,12 @@ const Index = () => {
         <div className="container mx-auto text-center">
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { number: "100+", label: "Projects Delivered" },
-              { number: "50+", label: "AI Implementations" },
-              { number: "30+", label: "Blockchain Solutions" },
+              { number: animatedStats.projects, label: "Projects Delivered" },
+              { number: animatedStats.implementations, label: "AI Implementations" },
+              { number: animatedStats.solutions, label: "Blockchain Solutions" },
             ].map((stat) => (
               <div key={stat.label} className="animate-fade-up">
-                <h3 className="text-4xl font-bold text-primary mb-2">{stat.number}</h3>
+                <h3 className="text-4xl font-bold text-primary mb-2">{stat.number}+</h3>
                 <p className="text-gray-300">{stat.label}</p>
               </div>
             ))}
