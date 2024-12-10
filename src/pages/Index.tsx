@@ -1,8 +1,6 @@
 import { ArrowRight, Code, Smartphone, Cloud, Brain, Database, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const Index = () => {
   const [animatedStats, setAnimatedStats] = useState({
@@ -10,17 +8,53 @@ const Index = () => {
     implementations: 0,
     solutions: 0
   });
+  const statsRef = useRef(null); // Create a reference to the stats section
+  const [inView, setInView] = useState(false); // Track whether the stats section is in view
 
+  // IntersectionObserver to detect when stats section is in view
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setAnimatedStats({
-        projects: 100,
-        implementations: 50,
-        solutions: 30
-      });
-    }, 500);
-    return () => clearTimeout(timer);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setInView(true);
+        }
+      },
+      { threshold: 0.5 } // Trigger when 50% of the element is in view
+    );
+
+    if (statsRef.current) {
+      observer.observe(statsRef.current);
+    }
+
+    return () => {
+      if (statsRef.current) {
+        observer.unobserve(statsRef.current);
+      }
+    };
   }, []);
+
+  // Count up numbers when stats section is in view
+  useEffect(() => {
+    if (inView) {
+      const timer = setInterval(() => {
+        setAnimatedStats((prevStats) => {
+          if (prevStats.projects < 100) {
+            return { ...prevStats, projects: prevStats.projects + 1 };
+          }
+          if (prevStats.implementations < 50) {
+            return { ...prevStats, implementations: prevStats.implementations + 1 };
+          }
+          if (prevStats.solutions < 30) {
+            return { ...prevStats, solutions: prevStats.solutions + 1 };
+          }
+          clearInterval(timer);
+          return prevStats;
+        });
+      }, 30); // Adjust this number to make the counting faster/slower
+
+      return () => clearInterval(timer);
+    }
+  }, [inView]);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-secondary to-secondary/95">
@@ -111,19 +145,18 @@ const Index = () => {
       </section>
 
       {/* Animated Stats Section */}
-      <section className="py-16 px-4 bg-gradient-to-r from-secondary/50 to-primary/10">
+      <section ref={statsRef} className="py-16 px-4 bg-gradient-to-r from-secondary/50 to-primary/10">
         <div className="container mx-auto text-center">
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { number: animatedStats.projects, label: "Projects Delivered" },
+            {[{ number: animatedStats.projects, label: "Projects Delivered" },
               { number: animatedStats.implementations, label: "AI Implementations" },
-              { number: animatedStats.solutions, label: "Blockchain Solutions" },
-            ].map((stat) => (
-              <div key={stat.label} className="animate-fade-up">
-                <h3 className="text-4xl font-bold text-primary mb-2">{stat.number}+</h3>
-                <p className="text-gray-300">{stat.label}</p>
-              </div>
-            ))}
+              { number: animatedStats.solutions, label: "Blockchain Solutions" }]
+              .map((stat) => (
+                <div key={stat.label} className="animate-fade-up">
+                  <h3 className="text-4xl font-bold text-primary mb-2">{stat.number}+</h3>
+                  <p className="text-gray-300">{stat.label}</p>
+                </div>
+              ))}
           </div>
         </div>
       </section>
