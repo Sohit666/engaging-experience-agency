@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
+
 
 const blogPosts = {
   "ai-in-business": {
@@ -48,7 +47,7 @@ const BlogPost = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <Navigation />
+  
       
       <div className="container mx-auto pt-32 px-4">
         <div className="max-w-3xl mx-auto">
@@ -78,7 +77,7 @@ const BlogPost = () => {
         </div>
       </div>
 
-      <Footer />
+   
     </div>
   );
 };

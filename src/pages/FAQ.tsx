@@ -1,4 +1,4 @@
-import Navigation from "@/components/Navigation";
+
 import {
   Accordion,
   AccordionContent,
@@ -36,7 +36,7 @@ const FAQ = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <Navigation />
+     
       
       <div className="container mx-auto pt-32 px-4">
         <h1 className="text-4xl md:text-6xl font-bold text-secondary mb-6 animate-fade-down">

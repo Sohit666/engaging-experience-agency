@@ -1,6 +1,4 @@
 import { useState } from "react";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
 import { Mail, Phone, MapPin, MessageSquare } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { useToast } from "@/components/ui/use-toast";
@@ -43,7 +41,7 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <Navigation />
+    
       
       <div className="container mx-auto pt-32 px-4 mb-20">
         <div className="text-center mb-16">
@@ -201,7 +199,7 @@ const Contact = () => {
         </div>
       </div>
 
-      <Footer />
+   
     </div>
   );
 };

@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
+
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -94,7 +93,7 @@ const CaseStudy = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <Navigation />
+  
       
       <div className="container mx-auto pt-32 px-4">
         <Link to="/portfolio">
@@ -162,7 +161,6 @@ const CaseStudy = () => {
         </div>
       </div>
 
-      <Footer />
     </div>
   );
 };

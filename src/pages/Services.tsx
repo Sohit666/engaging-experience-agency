@@ -1,7 +1,6 @@
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Globe, Smartphone, Brain, Code, Cloud, Database, Shield, Gauge, Workflow, Bot, LineChart, Blocks, Settings, Users, Laptop } from "lucide-react";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import { useEffect, useState } from "react";
 
 const Services = () => {
@@ -19,16 +18,19 @@ const Services = () => {
           icon: Code,
           title: "Custom Web Development",
           description: "Scalable and responsive web applications built with modern technologies.",
+          slug: "custom-web-development",
         },
         {
           icon: Cloud,
           title: "Cloud Integration",
           description: "Seamless cloud infrastructure implementation and management.",
+          slug: "cloud-integration",
         },
         {
           icon: Shield,
           title: "Cybersecurity Solutions",
           description: "Robust security measures to protect your digital assets.",
+          slug: "cybersecurity-solutions",
         },
         {
           icon: Gauge,
@@ -116,20 +118,18 @@ const Services = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-secondary to-secondary/95">
-      <Navigation />
-      
-      <div className="container mx-auto pt-32 px-4">
-        <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 animate-fade-down">
+      <div className="container mx-auto pt-20 px-4"> {/* Adjusted pt-32 to pt-20 */}
+        <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 animate-fade-down " style={{marginTop:"10px"}}>
           Our <span className="text-primary bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-400">Services</span>
         </h1>
-        <p className="text-xl text-gray-300 mb-12 max-w-2xl animate-fade-up">
+        <p className="text-xl text-gray-300 mb-10 max-w-2xl animate-fade-up"> {/* Adjusted mb-12 to mb-10 */}
           Cutting-edge solutions to transform your business in the digital age.
         </p>
 
         {services.map((category, idx) => (
-          <section key={category.category} className="mb-16">
+          <section key={category.category} className="mb-12"> {/* Adjusted mb-16 to mb-12 */}
             <h2 className="text-3xl font-bold text-white mb-8">{category.category}</h2>
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 gap-8" style={{paddingBottom:"25px", marginBottom:"-50px"}}>
               {category.items.map((service, index) => (
                 <div
                   key={service.title}
@@ -141,18 +141,18 @@ const Services = () => {
                   <service.icon className="w-12 h-12 text-primary mb-4" />
                   <h3 className="text-xl font-semibold text-white mb-2">{service.title}</h3>
                   <p className="text-gray-300 mb-4">{service.description}</p>
-                  <Button variant="outline" className="group border-primary text-primary hover:bg-primary/10">
-                    Learn More
-                    <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-                  </Button>
+                  <Link to={`/services/${service.slug}`}>
+                    <Button variant="outline" className="group border-primary text-primary hover:bg-primary/10">
+                      Learn More
+                      <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </Link>
                 </div>
               ))}
             </div>
           </section>
         ))}
       </div>
-
-      <Footer />
     </div>
   );
 };

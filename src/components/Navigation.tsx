@@ -11,14 +11,14 @@ const Navigation = () => {
     { name: "Services", path: "/services" },
     { name: "Portfolio", path: "/portfolio" },
     { name: "Blog", path: "/blog" },
-    { name: "Contact", path: "/contact" },
+    
   ];
 
   return (
     <nav className="fixed w-full bg-white/80 backdrop-blur-md z-50 py-4">
       <div className="container mx-auto px-4 flex justify-between items-center">
         <Link to="/" className="text-2xl font-bold text-secondary">
-          TechSolutions
+        Techihut solutions
         </Link>
 
         {/* Desktop Navigation */}
@@ -32,7 +32,9 @@ const Navigation = () => {
               {item.name}
             </Link>
           ))}
-          <Button>Get Started</Button>
+            <Link to="/contact">
+            <Button className="w-full">Contact Us</Button>
+            </Link>
         </div>
 
         {/* Mobile Navigation Toggle */}
@@ -59,7 +61,9 @@ const Navigation = () => {
                 {item.name}
               </Link>
             ))}
-            <Button className="w-full">Get Started</Button>
+            <Link to="/contact">
+            <Button className="w-full">Contact Us</Button>
+            </Link>
           </div>
         </div>
       )}

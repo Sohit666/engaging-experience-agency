@@ -1,4 +1,4 @@
-import Navigation from "@/components/Navigation";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
@@ -32,8 +32,7 @@ const Careers = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <Navigation />
-      
+    
       <div className="container mx-auto pt-32 px-4">
         <h1 className="text-4xl md:text-6xl font-bold text-secondary mb-6 animate-fade-down">
           Join Our <span className="text-primary">Team</span>

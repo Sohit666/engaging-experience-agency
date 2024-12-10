@@ -1,5 +1,4 @@
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -35,7 +34,7 @@ const Blog = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <Navigation />
+    
       
       <div className="container mx-auto pt-32 px-4">
         <h1 className="text-4xl md:text-6xl font-bold text-secondary mb-6 animate-fade-down">
@@ -75,7 +74,6 @@ const Blog = () => {
         </div>
       </div>
 
-      <Footer />
     </div>
   );
 };

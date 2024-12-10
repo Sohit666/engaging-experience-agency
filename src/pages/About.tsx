@@ -1,4 +1,4 @@
-import Navigation from "@/components/Navigation";
+
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -25,7 +25,7 @@ const About = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-secondary to-secondary/95">
-      <Navigation />
+     
       
       {/* Hero Section */}
       <div className="container mx-auto pt-32 px-4">
