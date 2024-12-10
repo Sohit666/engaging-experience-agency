@@ -1,4 +1,5 @@
 import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Building2, ShoppingBag, Heart, Landmark, Plane, Lightbulb } from "lucide-react";
 
@@ -62,6 +63,8 @@ const Industries = () => {
           ))}
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 };
