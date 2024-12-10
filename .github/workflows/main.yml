@@ -29,7 +29,7 @@ jobs:
       - name: Build and Push Docker Image to GCR
         run: |
           # Set image name and tag
-          IMAGE_NAME=gcr.io/${{ vars.PROJECT_NAME }}/techy
+          IMAGE_NAME=gcr.io/${{ vars.PROJECT_NAME }}/react-vite-app
           IMAGE_TAG=latest
           
           # Build and push Docker image
@@ -55,7 +55,7 @@ jobs:
       - name: Deploy to Cloud Run
         run: |
           gcloud run deploy fastapi-app \
-           --image gcr.io/${{ vars.PROJECT_NAME }}/fastapi-app:latest \
+           --image gcr.io/${{ vars.PROJECT_NAME }}/react-vite-app:latest \
            --platform managed \
            --region us-central1 \
            --allow-unauthenticated \
