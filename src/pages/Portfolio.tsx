@@ -2,6 +2,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Link } from "react-router-dom";
 
 const Portfolio = () => {
   const projects = [
@@ -10,24 +11,28 @@ const Portfolio = () => {
       description: "A full-stack e-commerce solution with real-time inventory management.",
       image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
       tech: ["React", "Node.js", "MongoDB"],
+      slug: "e-commerce-platform"
     },
     {
       title: "Healthcare App",
       description: "Mobile application for patient management and telemedicine.",
       image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
       tech: ["React Native", "Firebase", "WebRTC"],
+      slug: "healthcare-app"
     },
     {
       title: "Financial Dashboard",
       description: "Real-time analytics dashboard for financial institutions.",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
       tech: ["Vue.js", "D3.js", "Python"],
+      slug: "financial-dashboard"
     },
     {
       title: "Smart Home System",
       description: "IoT platform for home automation and energy management.",
       image: "https://images.unsplash.com/photo-1558002038-bb4237b50b11?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
       tech: ["React", "Node.js", "MQTT"],
+      slug: "smart-home-system"
     },
   ];
 
@@ -66,7 +71,9 @@ const Portfolio = () => {
                     </span>
                   ))}
                 </div>
-                <Button className="mt-4">View Case Study</Button>
+                <Link to={`/case-study/${project.slug}`}>
+                  <Button className="mt-4">View Case Study</Button>
+                </Link>
               </CardContent>
             </Card>
           ))}

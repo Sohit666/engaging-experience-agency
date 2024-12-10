@@ -1,7 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Globe, Smartphone, Brain, Code, Cloud, Database, Shield, Gauge } from "lucide-react";
+import { ArrowRight, Globe, Smartphone, Brain, Code, Cloud, Database, Shield, Gauge, Workflow, Bot, LineChart, Blocks, Settings, Users, Laptop } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const Services = () => {
@@ -25,6 +25,16 @@ const Services = () => {
           title: "Cloud Integration",
           description: "Seamless cloud infrastructure implementation and management.",
         },
+        {
+          icon: Shield,
+          title: "Cybersecurity Solutions",
+          description: "Robust security measures to protect your digital assets.",
+        },
+        {
+          icon: Gauge,
+          title: "Performance Optimization",
+          description: "Speed optimization and codebase improvements for maximum efficiency.",
+        },
       ]
     },
     {
@@ -40,6 +50,16 @@ const Services = () => {
           title: "Cross-Platform Solutions",
           description: "Efficient cross-platform apps that work on all devices.",
         },
+        {
+          icon: Workflow,
+          title: "App Maintenance",
+          description: "Ongoing support and updates for your mobile applications.",
+        },
+        {
+          icon: Users,
+          title: "UX/UI Design",
+          description: "User-centric design solutions for optimal engagement.",
+        },
       ]
     },
     {
@@ -54,6 +74,41 @@ const Services = () => {
           icon: Database,
           title: "Large Language Models",
           description: "Implementation of cutting-edge LLMs for your business.",
+        },
+        {
+          icon: Bot,
+          title: "Chatbot Development",
+          description: "Intelligent conversational AI solutions.",
+        },
+        {
+          icon: LineChart,
+          title: "Predictive Analytics",
+          description: "Data-driven insights using AI and ML algorithms.",
+        },
+      ]
+    },
+    {
+      category: "Enterprise Solutions",
+      items: [
+        {
+          icon: Blocks,
+          title: "System Integration",
+          description: "Seamless integration of multiple business systems and APIs.",
+        },
+        {
+          icon: Settings,
+          title: "DevOps Services",
+          description: "Streamlined development and deployment processes.",
+        },
+        {
+          icon: Laptop,
+          title: "Legacy Modernization",
+          description: "Upgrading legacy systems with modern technologies.",
+        },
+        {
+          icon: Shield,
+          title: "Compliance & Security",
+          description: "Industry-standard compliance and security implementations.",
         },
       ]
     },
