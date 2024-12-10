@@ -1,30 +1,35 @@
 import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Blog = () => {
   const posts = [
     {
-      title: "The Future of AI in Software Development",
+      slug: "ai-in-business",
+      title: "The Future of AI in Business",
       date: "March 15, 2024",
       category: "Technology Trends",
-      excerpt: "Explore how artificial intelligence is revolutionizing the software development process...",
-      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
+      excerpt: "Explore how artificial intelligence is revolutionizing business operations and decision-making processes...",
+      image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=500&auto=format&fit=crop&q=60",
     },
     {
-      title: "Building Scalable Cloud Solutions",
-      date: "March 12, 2024",
-      category: "Cloud Computing",
-      excerpt: "Learn best practices for creating scalable and resilient cloud infrastructure...",
-      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
+      slug: "blockchain-revolution",
+      title: "The Blockchain Revolution",
+      date: "March 14, 2024",
+      category: "Blockchain",
+      excerpt: "Discover how blockchain technology is transforming industries beyond cryptocurrency...",
+      image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=500&auto=format&fit=crop&q=60",
     },
     {
-      title: "Mobile App Development Trends 2024",
-      date: "March 10, 2024",
-      category: "Mobile Development",
-      excerpt: "Discover the latest trends shaping the future of mobile application development...",
-      image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
+      slug: "web3-future",
+      title: "Web3: The Next Internet Revolution",
+      date: "March 13, 2024",
+      category: "Web3",
+      excerpt: "Understanding the next evolution of the internet and its impact on digital experiences...",
+      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500&auto=format&fit=crop&q=60",
     },
   ];
 
@@ -58,15 +63,19 @@ const Blog = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600 mb-4">{post.excerpt}</p>
-                <Button variant="outline" className="group">
-                  Read More
-                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
+                <Link to={`/blog/${post.slug}`}>
+                  <Button variant="outline" className="group">
+                    Read More
+                    <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
           ))}
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 };

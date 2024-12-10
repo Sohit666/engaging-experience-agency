@@ -1,6 +1,7 @@
 import { ArrowRight, Code, Smartphone, Cloud, Brain, Database, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import { useEffect, useState } from "react";
 
 const Index = () => {
@@ -127,21 +128,124 @@ const Index = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 px-4">
-        <div className="container mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Ready to Transform Your Business?
+      {/* About Section */}
+      <section className="py-16 px-4 bg-white/5">
+        <div className="container mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
+            About Us
           </h2>
-          <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
-            Let's discuss how our AI and blockchain solutions can help you achieve your digital goals.
-          </p>
-          <Button size="lg" className="group bg-gradient-to-r from-primary to-purple-500 hover:opacity-90">
-            Schedule a Free Consultation
-            <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-          </Button>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="animate-fade-up">
+              <p className="text-gray-300 mb-6">
+                We're a team of passionate developers, designers, and innovators dedicated to transforming businesses through technology. With years of experience in AI and blockchain solutions, we help companies stay ahead in the digital age.
+              </p>
+              <Button className="group bg-gradient-to-r from-primary to-purple-500 hover:opacity-90">
+                Learn More
+                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg">
+                <h3 className="text-xl font-semibold text-primary mb-2">200+</h3>
+                <p className="text-gray-300">Projects Completed</p>
+              </div>
+              <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg">
+                <h3 className="text-xl font-semibold text-primary mb-2">50+</h3>
+                <p className="text-gray-300">Team Members</p>
+              </div>
+              <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg">
+                <h3 className="text-xl font-semibold text-primary mb-2">15+</h3>
+                <p className="text-gray-300">Years Experience</p>
+              </div>
+              <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg">
+                <h3 className="text-xl font-semibold text-primary mb-2">98%</h3>
+                <p className="text-gray-300">Client Satisfaction</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
+
+      {/* Testimonials Section */}
+      <section className="py-16 px-4">
+        <div className="container mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
+            What Our Clients Say
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                name: "John Smith",
+                role: "CEO, TechCorp",
+                content: "Working with TechSolutions has been transformative for our business. Their expertise in AI helped us streamline operations.",
+                image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop&q=60",
+              },
+              {
+                name: "Sarah Johnson",
+                role: "CTO, Innovation Labs",
+                content: "The team's attention to detail and technical expertise is outstanding. They delivered our blockchain solution ahead of schedule.",
+                image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&auto=format&fit=crop&q=60",
+              },
+              {
+                name: "Michael Chen",
+                role: "Product Manager",
+                content: "Their AI expertise helped us modernize our infrastructure and reduce costs by 30%. Highly recommended!",
+                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=60",
+              },
+            ].map((testimonial) => (
+              <div key={testimonial.name} className="bg-white/5 backdrop-blur-sm p-6 rounded-lg">
+                <p className="text-gray-300 mb-6">{testimonial.content}</p>
+                <div className="flex items-center gap-4">
+                  <img
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    className="w-12 h-12 rounded-full object-cover"
+                  />
+                  <div>
+                    <h3 className="font-semibold text-white">{testimonial.name}</h3>
+                    <p className="text-gray-300">{testimonial.role}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-16 px-4 bg-white/5">
+        <div className="container mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
+            Frequently Asked Questions
+          </h2>
+          <div className="max-w-3xl mx-auto">
+            {[
+              {
+                question: "What services do you offer?",
+                answer: "We offer comprehensive software development services including AI solutions, blockchain development, and digital transformation consulting.",
+              },
+              {
+                question: "How long does a typical project take?",
+                answer: "Project timelines vary depending on complexity. A typical project can take 4-12 weeks, but we'll provide a detailed timeline during consultation.",
+              },
+              {
+                question: "Do you provide ongoing support?",
+                answer: "Yes, we offer various support and maintenance packages to ensure your software continues to perform optimally after launch.",
+              },
+            ].map((faq, index) => (
+              <div
+                key={index}
+                className="bg-white/5 backdrop-blur-sm p-6 rounded-lg mb-4 hover:bg-white/10 transition-colors"
+              >
+                <h3 className="text-xl font-semibold text-white mb-2">{faq.question}</h3>
+                <p className="text-gray-300">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <Footer />
 
       {/* Floating Tech Icons */}
       <div className="fixed inset-0 pointer-events-none">

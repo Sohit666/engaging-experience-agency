@@ -8,11 +8,8 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import Portfolio from "./pages/Portfolio";
-import Industries from "./pages/Industries";
 import Blog from "./pages/Blog";
-import Careers from "./pages/Careers";
-import FAQ from "./pages/FAQ";
-import Testimonials from "./pages/Testimonials";
+import BlogPost from "./pages/BlogPost";
 
 const queryClient = new QueryClient();
 
@@ -28,11 +25,8 @@ const App = () => (
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/industries" element={<Industries />} />
           <Route path="/blog" element={<Blog />} />
-          <Route path="/careers" element={<Careers />} />
-          <Route path="/faq" element={<FAQ />} />
-          <Route path="/testimonials" element={<Testimonials />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
