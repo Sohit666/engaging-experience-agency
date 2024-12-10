@@ -11,14 +11,13 @@ const Navigation = () => {
     { name: "Services", path: "/services" },
     { name: "Portfolio", path: "/portfolio" },
     { name: "Blog", path: "/blog" },
-    
   ];
 
   return (
-    <nav className="w-full bg-white/80 backdrop-blur-md z-50 py-4">
+    <nav className=" w-full bg-white/80 backdrop-blur-md z-50 py-4">
       <div className="container mx-auto px-4 flex justify-between items-center">
         <Link to="/" className="text-2xl font-bold text-secondary">
-        Techihut solutions
+          TechSolutions
         </Link>
 
         {/* Desktop Navigation */}
@@ -32,7 +31,7 @@ const Navigation = () => {
               {item.name}
             </Link>
           ))}
-            <Link to="/contact">
+         <Link to="/contact">
             <Button className="w-full">Contact Us</Button>
             </Link>
         </div>
