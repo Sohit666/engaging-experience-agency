@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -33,37 +32,39 @@ const Blog = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
-    
-      
+    <div className="min-h-screen bg-gradient-to-b from-secondary to-secondary/95 text-white pb-10">
+
       <div className="container mx-auto pt-32 px-4">
-        <h1 className="text-4xl md:text-6xl font-bold text-secondary mb-6 animate-fade-down">
+        <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-down">
           Our <span className="text-primary">Blog</span>
         </h1>
-        <p className="text-xl text-gray-600 mb-12 max-w-2xl animate-fade-up">
+        <p className="text-xl text-gray-300 mb-12 max-w-2xl animate-fade-up">
           Insights and updates from our team of experts on technology trends and industry best practices.
         </p>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-up">
           {posts.map((post) => (
-            <Card key={post.title} className="overflow-hidden hover:shadow-lg transition-shadow">
+            <Card
+              key={post.title}
+              className="overflow-hidden hover:shadow-lg hover:shadow-primary/20 transition-shadow bg-white/10 backdrop-blur-md rounded-lg"
+            >
               <img
                 src={post.image}
                 alt={post.title}
                 className="w-full h-48 object-cover"
               />
               <CardHeader>
-                <div className="flex items-center gap-2 text-sm text-gray-600 mb-2">
+                <div className="flex items-center gap-2 text-sm text-gray-400 mb-2">
                   <span>{post.date}</span>
                   <span>•</span>
                   <span>{post.category}</span>
                 </div>
-                <CardTitle className="text-xl">{post.title}</CardTitle>
+                <CardTitle className="text-xl text-white">{post.title}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-600 mb-4">{post.excerpt}</p>
+                <p className="text-gray-300 mb-4">{post.excerpt}</p>
                 <Link to={`/blog/${post.slug}`}>
-                  <Button variant="outline" className="group">
+                  <Button variant="outline"  className="group bg-gradient-to-r from-primary to-purple-500 hover:opacity-90 mt-5">
                     Read More
                     <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
                   </Button>
@@ -73,7 +74,6 @@ const Blog = () => {
           ))}
         </div>
       </div>
-
     </div>
   );
 };

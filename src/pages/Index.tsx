@@ -1,6 +1,10 @@
-import { ArrowRight, Code, Smartphone, Cloud, Brain, Database, Shield } from "lucide-react";
+import { ArrowRight, Brain, Database, Cloud } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState, useRef } from "react";
+import { Link } from "react-router-dom";
+import FAQ from "./FAQ"
+import About from "./About";
+
 
 const Index = () => {
   const [animatedStats, setAnimatedStats] = useState({
@@ -8,7 +12,7 @@ const Index = () => {
     implementations: 0,
     solutions: 0
   });
-  const statsRef = useRef(null); // Create a reference to the stats section
+  const statsRef = useRef(null); // Reference to the stats section
   const [inView, setInView] = useState(false); // Track whether the stats section is in view
 
   // IntersectionObserver to detect when stats section is in view
@@ -38,10 +42,10 @@ const Index = () => {
     if (inView) {
       const timer = setInterval(() => {
         setAnimatedStats((prevStats) => {
-          if (prevStats.projects < 100) {
+          if (prevStats.projects < 50) {
             return { ...prevStats, projects: prevStats.projects + 1 };
           }
-          if (prevStats.implementations < 50) {
+          if (prevStats.implementations < 30) {
             return { ...prevStats, implementations: prevStats.implementations + 1 };
           }
           if (prevStats.solutions < 30) {
@@ -56,11 +60,79 @@ const Index = () => {
     }
   }, [inView]);
 
+  // Stats for the About section (count from 0)
+  const [stats, setStats] = useState({
+    projectsCompleted: 0,
+    teamMembers: 0,
+    yearsExperience: 0,
+    clientSatisfaction: 0,
+  });
+  const aboutStatsRef = useRef(null); // Reference to the about stats section
+  const [aboutInView, setAboutInView] = useState(false); // State to track if the About section is in view
+
+  // IntersectionObserver to trigger the counting effect when the About section is in view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setAboutInView(true);
+        }
+      },
+      { threshold: 0.5 } // Trigger when 50% of the element is in view
+    );
+
+    if (aboutStatsRef.current) {
+      observer.observe(aboutStatsRef.current);
+    }
+
+    return () => {
+      if (aboutStatsRef.current) {
+        observer.unobserve(aboutStatsRef.current);
+      }
+    };
+  }, []);
+
+  // Counting effect for the About section when it comes into view
+  useEffect(() => {
+    if (aboutInView) {
+      const interval = setInterval(() => {
+        setStats((prevStats) => {
+          const newStats = { ...prevStats };
+
+          if (newStats.projectsCompleted < 50) {
+            newStats.projectsCompleted += 1;
+          }
+          if (newStats.teamMembers < 5) {
+            newStats.teamMembers += 1;
+          }
+          if (newStats.yearsExperience < 30) {
+            newStats.yearsExperience += 1;
+          }
+          if (newStats.clientSatisfaction < 99) {
+            newStats.clientSatisfaction += 1;
+          }
+
+          // Stop the counting when all stats reach their targets
+          if (
+            newStats.projectsCompleted === 50 &&
+            newStats.teamMembers === 5 &&
+            newStats.yearsExperience === 30 &&
+            newStats.clientSatisfaction === 99
+          ) {
+            clearInterval(interval);
+          }
+
+          return newStats;
+        });
+      }, 30); // Adjust this value to control the speed of counting
+
+      return () => clearInterval(interval);
+    }
+  }, [aboutInView]);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-secondary to-secondary/95">
-     
-      
-      {/* Hero Section with Animated Background */}
+      {/* Hero Section */}
       <section className="relative pt-32 pb-16 px-4 overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute w-full h-full">
@@ -87,19 +159,24 @@ const Index = () => {
             Empowering Businesses with{" "}
             <span className="text-primary bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-400">
               AI & Blockchain
-            </span> Solutions
+            </span>{" "}
+            Solutions
           </h1>
           <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto animate-fade-up">
             Leveraging cutting-edge technologies to transform your digital presence
           </p>
           <div className="flex flex-col md:flex-row gap-4 justify-center animate-fade-up">
-            <Button size="lg" className="group bg-gradient-to-r from-primary to-purple-500 hover:opacity-90">
-              Explore Services
-              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10">
-              Contact Us
-            </Button>
+            <Link to="/Services">
+              <Button size="lg" className="group bg-gradient-to-r from-primary to-purple-500 hover:opacity-90">
+                Explore Services
+                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
+            <Link to="/contact">
+              <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10">
+                Contact Us
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -111,26 +188,21 @@ const Index = () => {
             Cutting-Edge Technologies
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Brain,
-                title: "AI & Machine Learning",
-                description:
-                  "Smart solutions powered by advanced artificial intelligence and machine learning algorithms.",
-              },
-              {
-                icon: Database,
-                title: "Blockchain Solutions",
-                description:
-                  "Secure and transparent blockchain implementations for modern business needs.",
-              },
-              {
-                icon: Cloud,
-                title: "Cloud & DevOps",
-                description:
-                  "Scalable cloud infrastructure with automated deployment pipelines.",
-              },
-            ].map((feature, index) => (
+            {[{
+              icon: Brain,
+              title: "AI & Machine Learning",
+              description: "Smart solutions powered by advanced artificial intelligence and machine learning algorithms.",
+            },
+            {
+              icon: Database,
+              title: "Blockchain Solutions",
+              description: "Secure and transparent blockchain implementations for modern business needs.",
+            },
+            {
+              icon: Cloud,
+              title: "Cloud & DevOps",
+              description: "Scalable cloud infrastructure with automated deployment pipelines.",
+            }].map((feature, index) => (
               <div
                 key={feature.title}
                 className="p-6 bg-white/5 backdrop-blur-sm rounded-lg hover:bg-white/10 transition-all duration-300 transform hover:-translate-y-1"
@@ -149,8 +221,8 @@ const Index = () => {
         <div className="container mx-auto text-center">
           <div className="grid md:grid-cols-3 gap-8">
             {[{ number: animatedStats.projects, label: "Projects Delivered" },
-              { number: animatedStats.implementations, label: "AI Implementations" },
-              { number: animatedStats.solutions, label: "Blockchain Solutions" }]
+            { number: animatedStats.implementations, label: "AI Implementations" },
+            { number: animatedStats.solutions, label: "Blockchain Solutions" }]
               .map((stat) => (
                 <div key={stat.label} className="animate-fade-up">
                   <h3 className="text-4xl font-bold text-primary mb-2">{stat.number}+</h3>
@@ -162,7 +234,7 @@ const Index = () => {
       </section>
 
       {/* About Section */}
-      <section className="py-16 px-4 bg-white/5">
+      {/* <section ref={aboutStatsRef} className="py-16 px-4 bg-white/5">
         <div className="container mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
             About Us
@@ -170,34 +242,32 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="animate-fade-up">
               <p className="text-gray-300 mb-6">
-                We're a team of passionate developers, designers, and innovators dedicated to transforming businesses through technology. With years of experience in AI and blockchain solutions, we help companies stay ahead in the digital age.
+                We are a team of passionate developers, designers, and innovators dedicated to transforming businesses through technology. With years of experience in AI and blockchain solutions, we help companies stay ahead in the digital age.
               </p>
-              <Button className="group bg-gradient-to-r from-primary to-purple-500 hover:opacity-90">
-                Learn More
-                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg">
-                <h3 className="text-xl font-semibold text-primary mb-2">200+</h3>
+                <h3 className="text-xl font-semibold text-primary mb-2">{stats.projectsCompleted}+</h3>
                 <p className="text-gray-300">Projects Completed</p>
               </div>
               <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg">
-                <h3 className="text-xl font-semibold text-primary mb-2">50+</h3>
+                <h3 className="text-xl font-semibold text-primary mb-2">{stats.teamMembers}+</h3>
                 <p className="text-gray-300">Team Members</p>
               </div>
               <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg">
-                <h3 className="text-xl font-semibold text-primary mb-2">15+</h3>
+                <h3 className="text-xl font-semibold text-primary mb-2">{stats.yearsExperience}+</h3>
                 <p className="text-gray-300">Years Experience</p>
               </div>
               <div className="bg-white/5 backdrop-blur-sm p-6 rounded-lg">
-                <h3 className="text-xl font-semibold text-primary mb-2">98%</h3>
+                <h3 className="text-xl font-semibold text-primary mb-2">{stats.clientSatisfaction}%</h3>
                 <p className="text-gray-300">Client Satisfaction</p>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
+
+      <About/>
 
       {/* Testimonials Section */}
       <section className="py-16 px-4">
@@ -246,7 +316,7 @@ const Index = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 px-4 bg-white/5">
+      {/* <section className="py-16 px-4 bg-white/5">
         <div className="container mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
             Frequently Asked Questions
@@ -276,7 +346,12 @@ const Index = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
+
+<section  style={{marginTop:"-50px", marginBottom:"20px" }}>
+
+      <FAQ/>
+</section>
 
 
        {/* Newsletter Subscription Section */}

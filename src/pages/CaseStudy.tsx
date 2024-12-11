@@ -88,41 +88,46 @@ const CaseStudy = () => {
   const study = caseStudies[slug as keyof typeof caseStudies];
 
   if (!study) {
-    return <div>Case study not found</div>;
+    return <div className="min-h-screen flex items-center justify-center text-white">Case study not found</div>;
   }
 
   return (
-    <div className="min-h-screen bg-white">
-  
-      
-      <div className="container mx-auto pt-32 px-4">
+    <div className="min-h-screen bg-gradient-to-b from-secondary to-secondary/95 text-white pb-10">
+      <div className="container mx-auto pt-20 px-4">
         <Link to="/portfolio">
-          <Button variant="outline" className="mb-8">
+          <Button
+            variant="outline"
+             className="group bg-gradient-to-r from-primary to-purple-500 hover:opacity-90 mb-2"
+          >
             <ArrowLeft className="mr-2 h-4 w-4" /> Back to Portfolio
           </Button>
         </Link>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid md:grid-cols-2 gap-12 animate-fade-up">
           <div>
-            <h1 className="text-4xl font-bold text-secondary mb-4">{study.title}</h1>
-            <div className="text-gray-600 mb-6">
-              <p><strong>Client:</strong> {study.client}</p>
-              <p><strong>Duration:</strong> {study.duration}</p>
-            </div>
-            
-            <div className="mb-8">
-              <h2 className="text-2xl font-semibold text-secondary mb-3">Challenge</h2>
-              <p className="text-gray-600">{study.challenge}</p>
-            </div>
-
-            <div className="mb-8">
-              <h2 className="text-2xl font-semibold text-secondary mb-3">Solution</h2>
-              <p className="text-gray-600">{study.solution}</p>
+            <h1 className="text-4xl font-bold mb-4">{study.title}</h1>
+            <div className="text-gray-300 mb-6">
+              <p>
+                <strong>Client:</strong> {study.client}
+              </p>
+              <p>
+                <strong>Duration:</strong> {study.duration}
+              </p>
             </div>
 
             <div className="mb-8">
-              <h2 className="text-2xl font-semibold text-secondary mb-3">Results</h2>
-              <ul className="list-disc list-inside text-gray-600">
+              <h2 className="text-2xl font-semibold mb-3">Challenge</h2>
+              <p className="text-gray-300">{study.challenge}</p>
+            </div>
+
+            <div className="mb-8">
+              <h2 className="text-2xl font-semibold mb-3">Solution</h2>
+              <p className="text-gray-300">{study.solution}</p>
+            </div>
+
+            <div className="mb-8">
+              <h2 className="text-2xl font-semibold mb-3">Results</h2>
+              <ul className="list-disc list-inside text-gray-300">
                 {study.results.map((result, index) => (
                   <li key={index}>{result}</li>
                 ))}
@@ -134,11 +139,11 @@ const CaseStudy = () => {
             <img
               src={study.image}
               alt={study.title}
-              className="w-full h-64 object-cover rounded-lg mb-8"
+              className="w-full h-64 object-cover rounded-lg mb-8 shadow-lg"
             />
 
             <div className="mb-8">
-              <h2 className="text-2xl font-semibold text-secondary mb-3">Technologies Used</h2>
+              <h2 className="text-2xl font-semibold mb-3">Technologies Used</h2>
               <div className="flex flex-wrap gap-2">
                 {study.technologies.map((tech) => (
                   <span
@@ -151,16 +156,19 @@ const CaseStudy = () => {
               </div>
             </div>
 
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <h2 className="text-2xl font-semibold text-secondary mb-3">Client Testimonial</h2>
-              <blockquote className="text-gray-600 italic mb-4">"{study.testimonial.text}"</blockquote>
-              <p className="text-gray-800 font-semibold">{study.testimonial.author}</p>
-              <p className="text-gray-600">{study.testimonial.role}</p>
+            <div className="bg-white/10 backdrop-blur-md p-6 rounded-lg shadow-lg">
+              <h2 className="text-2xl font-semibold mb-3">Client Testimonial</h2>
+              <blockquote className="text-gray-300 italic mb-4">
+                "{study.testimonial.text}"
+              </blockquote>
+              <p className="text-primary font-semibold">
+                {study.testimonial.author}
+              </p>
+              <p className="text-gray-300">{study.testimonial.role}</p>
             </div>
           </div>
         </div>
       </div>
-
     </div>
   );
 };

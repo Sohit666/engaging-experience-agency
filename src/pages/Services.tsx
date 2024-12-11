@@ -142,7 +142,7 @@ const Services = () => {
                   <h3 className="text-xl font-semibold text-white mb-2">{service.title}</h3>
                   <p className="text-gray-300 mb-4">{service.description}</p>
                   <Link to={`/services/${service.slug}`}>
-                    <Button variant="outline" className="group border-primary text-primary hover:bg-primary/10">
+                    <Button variant="outline" className="group bg-gradient-to-r from-primary to-purple-500 hover:opacity-90">
                       Learn More
                       <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
                     </Button>

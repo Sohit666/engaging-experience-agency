@@ -40,15 +40,13 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
-    
-      
+    <div className="min-h-screen bg-gradient-to-b from-secondary to-secondary/95 text-white">
       <div className="container mx-auto pt-32 px-4 mb-20">
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-bold text-secondary mb-6 animate-fade-down">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-down">
             Get in <span className="text-primary">Touch</span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto animate-fade-up">
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto animate-fade-up">
             Have a question or want to work together? We'd love to hear from you.
             Get in touch with our team.
           </p>
@@ -56,47 +54,41 @@ const Contact = () => {
 
         <div className="grid md:grid-cols-2 gap-12 items-start">
           {/* Contact Information */}
-          <div className="space-y-8 p-8 bg-gray-50 rounded-lg animate-fade-right">
-            <h2 className="text-2xl font-bold text-secondary mb-6">
-              Contact Information
-            </h2>
-            
+          <div className="space-y-8 p-8 bg-white/10 backdrop-blur-md rounded-lg animate-fade-right">
+            <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
             <div className="space-y-6">
               <div className="flex items-start space-x-4">
                 <Mail className="w-6 h-6 text-primary mt-1" />
                 <div>
-                  <h3 className="font-semibold text-secondary">Email Us</h3>
-                  <p className="text-gray-600">contact@techsolutions.com</p>
-                  <p className="text-gray-600">support@techsolutions.com</p>
+                  <h3 className="font-semibold text-white">Email Us</h3>
+                  <p className="text-gray-300">contact@techsolutions.com</p>
+                  <p className="text-gray-300">support@techsolutions.com</p>
                 </div>
               </div>
-
               <div className="flex items-start space-x-4">
                 <Phone className="w-6 h-6 text-primary mt-1" />
                 <div>
-                  <h3 className="font-semibold text-secondary">Call Us</h3>
-                  <p className="text-gray-600">+1 (555) 123-4567</p>
-                  <p className="text-gray-600">+1 (555) 987-6543</p>
+                  <h3 className="font-semibold text-white">Call Us</h3>
+                  <p className="text-gray-300">+1 (555) 123-4567</p>
+                  <p className="text-gray-300">+1 (555) 987-6543</p>
                 </div>
               </div>
-
               <div className="flex items-start space-x-4">
                 <MapPin className="w-6 h-6 text-primary mt-1" />
                 <div>
-                  <h3 className="font-semibold text-secondary">Visit Us</h3>
-                  <p className="text-gray-600">
+                  <h3 className="font-semibold text-white">Visit Us</h3>
+                  <p className="text-gray-300">
                     123 Tech Street, Silicon Valley
                     <br />
                     California, USA 94025
                   </p>
                 </div>
               </div>
-
               <div className="flex items-start space-x-4">
                 <MessageSquare className="w-6 h-6 text-primary mt-1" />
                 <div>
-                  <h3 className="font-semibold text-secondary">Business Hours</h3>
-                  <p className="text-gray-600">
+                  <h3 className="font-semibold text-white">Business Hours</h3>
+                  <p className="text-gray-300">
                     Monday - Friday: 9:00 AM - 6:00 PM
                     <br />
                     Saturday: 10:00 AM - 2:00 PM
@@ -107,11 +99,8 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="p-8 bg-white rounded-lg shadow-lg animate-fade-left">
-            <h2 className="text-2xl font-bold text-secondary mb-6">
-              Send us a Message
-            </h2>
-            
+          <div className="p-8 bg-white/10 backdrop-blur-md rounded-lg shadow-lg animate-fade-left">
+            <h2 className="text-2xl font-bold mb-6">Send us a Message</h2>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 <FormField
@@ -127,7 +116,6 @@ const Contact = () => {
                     </FormItem>
                   )}
                 />
-
                 <FormField
                   control={form.control}
                   name="email"
@@ -141,7 +129,6 @@ const Contact = () => {
                     </FormItem>
                   )}
                 />
-
                 <FormField
                   control={form.control}
                   name="subject"
@@ -155,7 +142,6 @@ const Contact = () => {
                     </FormItem>
                   )}
                 />
-
                 <FormField
                   control={form.control}
                   name="message"
@@ -173,7 +159,6 @@ const Contact = () => {
                     </FormItem>
                   )}
                 />
-
                 <Button
                   type="submit"
                   className="w-full"
@@ -198,8 +183,6 @@ const Contact = () => {
           ></iframe>
         </div>
       </div>
-
-   
     </div>
   );
 };
